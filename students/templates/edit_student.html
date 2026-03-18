@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        body{
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        .STD{
+            display: flex;
+
+        }
+        .STD img{
+            position:fixed;
+            z-index: -1 ;
+            height: 600px;
+        }
+        .form-container{
+            width: 60%;
+            /* max-width: 800px; */
+            margin: 20px auto;
+            margin-left: 600px;
+            background: #fff;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,);
+        }
+        .form-box{
+            flex: 1;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label{
+            align-self: flex-start;
+            margin: 10px 0px 5px 10%;
+            font-weight: 600;
+        }
+        .input{
+            width: 80%;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .btn{
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: #3498bd;
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            text-align: center;
+
+        }
+        .btn:hover{
+            background-color: #2980b9;
+        }
+        .form-container img{
+            width: 200px;
+            height: 100px;
+        }
+        h1{
+            letter-spacing: 1px;
+            font-size: 2.3rem;
+            background: linear-gradient(135deg,#2c3e50,#34495e);
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        .back{
+            color: blue;
+            position: relative;
+            left: 150px;
+            top: -20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <span>
+    <h1>Student Records Dashboard</h1>
+    </span>
+    <div class="STD">
+        <img src="https://static.vecteezy.com/system/resources/previews/011/153/363/non_2x/3d-web-developer-working-on-project-illustration-png.png">
+    <div class="form-container">
+        <div >
+        <form method="post" enctype="multipart/form-data">
+            <h2>Add New student</h2>
+        {% csrf_token %}
+            <label for="name">Full Name</label>
+            <input type="text" name="fname" placeholder="Enter FUll name" required class="input">
+
+            <label for="email">Email Id</label>
+            <input type="text" name="email" placeholder="Enter email" required class="input">
+
+            <label for="college">college name</label>
+            <input type="text" name="college" placeholder="Enter college Name" required class="input">
+
+            <label for="name">City</label>
+            <input type="text" name="city" placeholder="Enter city name" required class="input">
+
+            <label for="jdate">Join Date</label>
+            <input type="date" name="jdate"  required class="input">
+
+            <label for="tfew">Total fee</label>
+            <input type="text" name="tfee" placeholder="Enter Paid fee"required class="input" id="a">
+
+            <label for="pfee">paid fee</label>
+            <input type="text" name="pfee" placeholder="Enter paid fee" required class="input" id="b" onkeyup="fee()">
+
+            <label for="lfee">Left fee</label>
+            <input type="text" name="lfee" placeholder="Enter Left fee" required class="input" id="c">
+
+            <label for="phone">Contact Number</label>
+            <input type="tel" name="phone" placeholder="Enter Contact Number" required class="input">
+            
+            <label for="technology"> Select technology </label>
+
+             {% if data.technology =="python"%}
+            
+            <select class="input" name="technology">
+                
+                <option value="python">python</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="Mern">Mern</option>
+                <option value="Asp.net">Asp.net</option>
+            </select>
+             {% endif %}
+            {% if data.technology == "php"%}
+            
+            <select class="input" name="technology">
+                
+                <option value="python">python</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="Mern">Mern</option>
+                <option value="Asp.net">Asp.net</option>
+            </select>
+             {% endif %}
+                {% if data.technology == "java"%}
+            
+            <select class="input" name="technology">
+                
+                <option value="python">python</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="Mern">Mern</option>
+                <option value="Asp.net">Asp.net</option>
+            </select>
+             {% endif %}
+            {% if data.technology == "Mern"%}
+            
+            <select class="input" name="technology">
+                
+                <option value="python">python</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="Mern">Mern</option>
+                <option value="Asp.net">Asp.net</option>
+            </select>
+             {% endif %}
+
+            {% if data.technology =="Asp.net"%}
+            
+            <select class="input" name="technology">
+                
+                <option value="python">python</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="Mern">Mern</option>
+                <option value="Asp.net">Asp.net</option>
+            </select>
+             {% endif %}
+
+            
+            <label for="image">uplod image</label>
+            <input type="file" name="image" placeholder="uplod image" required class="input">
+            
+            <input type="submit" class="btn">
+            <a href="{% url 'adminhome' %}" class="back">Back to Dashboard</a>
+
+
+        </form>
+        </div>
+    </div>
+    </div>
+    <script>
+        function fee(){
+            let f=Number(a.value)-(b.value)
+            c.value=f
+        } 
+    </script>
+     {% if error == "no" %}
+     <script>
+        alert("Data Insserted successfull")
+        window.location=("{% url 'view_stu'  %}")
+     </script>
+{% endif %}
+{% if error == "yes" %}
+     <script>
+         alert("Somthing went wrong")
+     </script>
+
+     {% endif %}
+
+</body>
+</html>

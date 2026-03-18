@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+   body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url('https://t3.ftcdn.net/jpg/08/68/51/04/360_F_868510427_vsvN67LV1zSmLMyXMOFG05tRCmTAj1xL.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 800px;
+
+   }
+   .login-container{
+        background-color: rgba(255, 255, 255, 0.55);
+        padding: 40px 30px;
+        border-radius: 10px;
+        height: 400px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 20%;
+        margin-top: 100px;
+
+   }
+
+   .login-heading{
+    font-size: 28px;
+    font-weight: bold;
+    /* text-decoration: underline; */
+    margin-bottom: 30px;
+
+   }
+   img{
+    height: 80px;
+    width: 80px;
+    
+   }
+   .input{
+    display: block;
+    margin: auto;
+    width: 80%;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+
+   }
+
+   .login-btn{
+    font-size: 25px;
+    background-color:#00bcd4;
+    padding: 5px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    margin-top: 20px;
+    
+   }
+    .login-btn:hover{
+        background-color: #008c9e;
+    }
+   
+   </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+     <div class="login-container">
+        <img src="https://icons.veryicon.com/png/o/miscellaneous/icon-icon-of-ai-intelligent-dispensing/login-user-name-1.png" alt="">
+        <h2 class="login-heading">Login</h2>
+        <form method="post">
+            {%  csrf_token %}
+       <input type="text" placeholder="Username" name="username" class="input" required>
+      <input type="password" placeholder="Password" name="password" class="input" required>
+
+      <input type="submit" value="Login" class="login-btn"> 
+
+        </form>
+
+
+     </div>
+     {% if error == "no" %}
+     <script>
+        alert("login successfull")
+        window.location=("{% url 'adminhome'  %}")
+     </script>
+{% endif %}
+{% if error == "yes" %}
+     <script>
+         alert("invalid username or password")
+     </script>
+
+     {% endif %}
+
+    
+</body>
+</html>

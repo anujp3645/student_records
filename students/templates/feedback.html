@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <style>
+        body{
+            background: linear-gradient(135deg,#e0eafc,#cfdef3);
+            font-family: Arial;
+        }
+        .box{
+            width: 400px;
+            margin: 80px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+        }
+        input, textarea{
+            width: 90%;
+            margin: 10px;
+            padding: 10px;
+        }
+        button{
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Feedback Form</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <textarea name="message" placeholder="Your Feedback"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
