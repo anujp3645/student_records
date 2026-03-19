@@ -1,13 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#e0eafc,#cfdef3);
+}
+
+/* CONTAINER */
+.container{
+    max-width:800px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+/* HEADING */
+h1{
+    margin-bottom:20px;
+    color:#2c3e50;
+}
+
+/* TEXT */
+p{
+    margin-bottom:20px;
+    font-size:16px;
+    color:#555;
+}
+
+/* FORM */
+.form-group{
+    margin-bottom:15px;
+    text-align:left;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+/* BUTTON */
+button{
+    padding:12px 20px;
+    background:#3498db;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+    .container{
+        margin:20px;
+        padding:20px;
+    }
+}
+</style>
+
 </head>
+
 <body>
-    {% include 'nav.html' %}
-    <h1>this is conatct page </h1>
-    
+
+{% include 'nav.html' %}
+
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>If you have any questions, feel free to contact us.</p>
+
+    <form>
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+        </div>
+
+        <div class="form-group">
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
 </body>
 </html>

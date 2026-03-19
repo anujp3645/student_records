@@ -1,136 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+.home-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
+.home-menu {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 10px;
+}
 
-        body {
-            height: 100vh;
-            width: 100%;
-            background-color: #f4f6f8;
-            color: #333;
-        }
+.home-menu li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
 
-        .table-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h2{
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333s;
-        }
-        table{
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th,td{
-            padding: 12px 8px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
+.home-menu li a:hover {
+    background: #3498db;
+}
 
-        }
-        th{
-            background-color: #3498db;
-            color: #fff;
-            font-weight: 600;
-        }
-        tr:hover{
-            background-color: #f1f9ff;
-
-        }
-        .btn{
-            padding: 8px 15px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s ease;
-            display: inline-block;
-            border-radius: 6px;
-        }
-        .edit-btn{
-            background-color: #27ea60;
-            border: none;
-            color: #fff;
-
-        }
-        .edit-btn:hover{
-            background-color: #1e8449;
-        }
-        .del-btn{
-            background-color: #e74c3c;
-            border: none;
-            color: #fff;
-        }
-        .del-btn:hover{
-            background-color: #c0398c;
-        }
-        img{
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 2px 5px rgbe(0,0,0,0.2);
-        }
-    </style>
-</head>
-
-<body>
-    <div class="table-container">
-        <h2>View Student</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>S.no</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>College</th>
-                    <th>City</th>
-                    <th>Join date</th>
-                    <th>Total fee</th>
-                    <th>Paid fee</th>
-                    <th>Left fee</th>
-                    <th>Contact</th>
-                    <th>Technology</th>
-                    <th>Photo</th>
-                    <th>Action</th>
-                </tr>
-                {% for i in data %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{i.name}}</td>
-                    <td>{{i.email}}</td>
-                    <td>{{i.college}}</td>
-                    <td>{{i.city}}</td>
-                    <td>{{i.jdate}}</td>
-                    <td>{{i.totolf}}</td>
-                    <td>{{i.paidf}}</td>
-                    <td>{{i.leftf}}</td>
-                    <td>{{i.phone}}</td>
-                    <td>{{i.technology}}</td>
-                    <td><img src="{{i.image.url}}" ></td>
-                    <td> <a href="{% url 'edit_stu' i.id %}" class="btn edit-btn">Edit</a>
-                         <a href="{% url 'del_stu' i.id%}" class="btn del-btn">Delete</a>
-                    </td>
-                </tr>
-                {% endfor%}
-            </thead>
-        </table>
-
-    </div>
-
-</body>
-
-</html>
+/* Mobile */
+@media(max-width:600px){
+    .home-menu {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>

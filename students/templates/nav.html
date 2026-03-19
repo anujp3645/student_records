@@ -1,60 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .home-base {
-            height:80px;
-            background-color: rgb(172, 227, 249);
-            display: flex;
-            align-items: center;
-            padding:0px 30px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial;
+}
 
-        .home-menu li {
-            display: inline-block;
-        }
+/* NAVBAR */
+.home-base{
+    background:#2c3e50;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        .home-menu li a {
-            text-decoration: none;
-            color: black;
-            border: 1px solid black;
-            padding: 4px 20px;
-            margin: 0 10px;
-            font-size: 25px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            border-radius: 5px;
-            transition: all .4s;
-        }
+/* LOGO */
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
 
-        .home-menu li a:hover {
-            background-color: rgb(47, 189.245);
-            box-shadow: 0 0 5px 5px rgb(114, 128, 133);
-        }
-    </style>
+/* MENU */
+.home-menu{
+    list-style:none;
+    display:flex;
+}
+
+.home-menu li{
+    margin-left:15px;
+}
+
+.home-menu li a{
+    text-decoration:none;
+    color:white;
+    padding:8px 15px;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+.home-menu li a:hover{
+    background:#3498db;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+    display:none;
+    font-size:25px;
+    color:white;
+    cursor:pointer;
+}
+
+/* 📱 MOBILE */
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .home-menu{
+        position:absolute;
+        top:60px;
+        right:0;
+        background:#2c3e50;
+        flex-direction:column;
+        width:200px;
+        display:none;
+    }
+
+    .home-menu.active{
+        display:flex;
+    }
+
+    .home-menu li{
+        margin:10px 0;
+        text-align:center;
+    }
+}
+</style>
 </head>
 
 <body>
-    <div class="home-base">
-        <ul class="home-menu">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
-        </ul>
 
-    </div>
+<div class="home-base">
+
+    <div class="logo">StudentApp</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="home-menu" id="menu">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
 </body>
-
 </html>

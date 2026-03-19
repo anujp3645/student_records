@@ -1,227 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        *{
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        body{
-            background-color: #f4f6f8;
-            color: #333;
-        }
-        .STD{
-            display: flex;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Student</title>
 
-        }
-        .STD img{
-            position:fixed;
-            z-index: -1 ;
-            height: 600px;
-        }
-        .form-container{
-            width: 60%;
-            /* max-width: 800px; */
-            margin: 20px auto;
-            margin-left: 600px;
-            background: #fff;
-            padding: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,);
-        }
-        .form-box{
-            flex: 1;
-        }
-        h2{
-            text-align: center;
-            margin-bottom: 20px;
-            color: #2c3e50;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
 
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label{
-            align-self: flex-start;
-            margin: 10px 0px 5px 10%;
-            font-weight: 600;
-        }
-        .input{
-            width: 80%;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-        .btn{
-            padding: 10px 20px;
-            border-radius: 8px;
-            background-color: #3498bd;
-            color: #fff;
-            font-weight: 600;
-            border: none;
-            text-align: center;
+body{
+    background:#f4f6f8;
+}
 
-        }
-        .btn:hover{
-            background-color: #2980b9;
-        }
-        .form-container img{
-            width: 200px;
-            height: 100px;
-        }
-        h1{
-            letter-spacing: 1px;
-            font-size: 2.3rem;
-            background: linear-gradient(135deg,#2c3e50,#34495e);
-            color: #fff;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            width: 100%;
-        }
-        .back{
-            color: blue;
-            position: relative;
-            left: 150px;
-            top: -20px;
-            
-        }
-    </style>
+/* HEADER */
+.header{
+    background: linear-gradient(135deg,#2c3e50,#34495e);
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+/* CONTAINER */
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    gap:20px;
+}
+
+/* IMAGE */
+.image{
+    flex:1;
+    text-align:center;
+}
+
+.image img{
+    max-width:100%;
+    height:auto;
+}
+
+/* FORM */
+.form-container{
+    flex:1;
+    max-width:500px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    margin-top:10px;
+    font-weight:600;
+}
+
+input, select{
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    margin-top:5px;
+}
+
+/* BUTTON */
+button{
+    margin-top:15px;
+    padding:10px;
+    background:#3498db;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+
+/* BACK LINK */
+.back{
+    display:block;
+    text-align:center;
+    margin-top:10px;
+    color:#3498db;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+    }
+}
+</style>
 </head>
+
 <body>
-    <span>
+
+<div class="header">
     <h1>Student Records Dashboard</h1>
-    </span>
-    <div class="STD">
+</div>
+
+<div class="container">
+
+    <!-- IMAGE -->
+    <div class="image">
         <img src="https://static.vecteezy.com/system/resources/previews/011/153/363/non_2x/3d-web-developer-working-on-project-illustration-png.png">
+    </div>
+
+    <!-- FORM -->
     <div class="form-container">
-        <div >
         <form method="post" enctype="multipart/form-data">
-            <h2>Add New student</h2>
-        {% csrf_token %}
-            <label for="name">Full Name</label>
-            <input type="text" name="fname" placeholder="Enter FUll name" required class="input">
+            {% csrf_token %}
+            <h2>Add / Edit Student</h2>
 
-            <label for="email">Email Id</label>
-            <input type="text" name="email" placeholder="Enter email" required class="input">
+            <label>Full Name</label>
+            <input type="text" name="fname" required value="{{data.fname|default:''}}">
 
-            <label for="college">college name</label>
-            <input type="text" name="college" placeholder="Enter college Name" required class="input">
+            <label>Email</label>
+            <input type="email" name="email" required value="{{data.email|default:''}}">
 
-            <label for="name">City</label>
-            <input type="text" name="city" placeholder="Enter city name" required class="input">
+            <label>College</label>
+            <input type="text" name="college" required value="{{data.college|default:''}}">
 
-            <label for="jdate">Join Date</label>
-            <input type="date" name="jdate"  required class="input">
+            <label>City</label>
+            <input type="text" name="city" required value="{{data.city|default:''}}">
 
-            <label for="tfew">Total fee</label>
-            <input type="text" name="tfee" placeholder="Enter Paid fee"required class="input" id="a">
+            <label>Join Date</label>
+            <input type="date" name="jdate" required value="{{data.jdate|default:''}}">
 
-            <label for="pfee">paid fee</label>
-            <input type="text" name="pfee" placeholder="Enter paid fee" required class="input" id="b" onkeyup="fee()">
+            <label>Total Fee</label>
+            <input type="number" name="tfee" id="a" required value="{{data.tfee|default:''}}">
 
-            <label for="lfee">Left fee</label>
-            <input type="text" name="lfee" placeholder="Enter Left fee" required class="input" id="c">
+            <label>Paid Fee</label>
+            <input type="number" name="pfee" id="b" onkeyup="fee()" required value="{{data.pfee|default:''}}">
 
-            <label for="phone">Contact Number</label>
-            <input type="tel" name="phone" placeholder="Enter Contact Number" required class="input">
-            
-            <label for="technology"> Select technology </label>
+            <label>Left Fee</label>
+            <input type="number" name="lfee" id="c" required value="{{data.lfee|default:''}}">
 
-             {% if data.technology =="python"%}
-            
-            <select class="input" name="technology">
-                
-                <option value="python">python</option>
-                <option value="php">php</option>
-                <option value="java">java</option>
-                <option value="Mern">Mern</option>
-                <option value="Asp.net">Asp.net</option>
+            <label>Phone</label>
+            <input type="tel" name="phone" required value="{{data.phone|default:''}}">
+
+            <label>Technology</label>
+            <select name="technology">
+                <option value="">Select Technology</option>
+                <option value="python" {% if data.technology == "python" %}selected{% endif %}>Python</option>
+                <option value="php" {% if data.technology == "php" %}selected{% endif %}>PHP</option>
+                <option value="java" {% if data.technology == "java" %}selected{% endif %}>Java</option>
+                <option value="Mern" {% if data.technology == "Mern" %}selected{% endif %}>MERN</option>
+                <option value="Asp.net" {% if data.technology == "Asp.net" %}selected{% endif %}>ASP.NET</option>
             </select>
-             {% endif %}
-            {% if data.technology == "php"%}
-            
-            <select class="input" name="technology">
-                
-                <option value="python">python</option>
-                <option value="php">php</option>
-                <option value="java">java</option>
-                <option value="Mern">Mern</option>
-                <option value="Asp.net">Asp.net</option>
-            </select>
-             {% endif %}
-                {% if data.technology == "java"%}
-            
-            <select class="input" name="technology">
-                
-                <option value="python">python</option>
-                <option value="php">php</option>
-                <option value="java">java</option>
-                <option value="Mern">Mern</option>
-                <option value="Asp.net">Asp.net</option>
-            </select>
-             {% endif %}
-            {% if data.technology == "Mern"%}
-            
-            <select class="input" name="technology">
-                
-                <option value="python">python</option>
-                <option value="php">php</option>
-                <option value="java">java</option>
-                <option value="Mern">Mern</option>
-                <option value="Asp.net">Asp.net</option>
-            </select>
-             {% endif %}
 
-            {% if data.technology =="Asp.net"%}
-            
-            <select class="input" name="technology">
-                
-                <option value="python">python</option>
-                <option value="php">php</option>
-                <option value="java">java</option>
-                <option value="Mern">Mern</option>
-                <option value="Asp.net">Asp.net</option>
-            </select>
-             {% endif %}
+            <label>Upload Image</label>
+            <input type="file" name="image">
 
-            
-            <label for="image">uplod image</label>
-            <input type="file" name="image" placeholder="uplod image" required class="input">
-            
-            <input type="submit" class="btn">
+            <button type="submit">Submit</button>
+
             <a href="{% url 'adminhome' %}" class="back">Back to Dashboard</a>
-
-
         </form>
-        </div>
     </div>
-    </div>
-    <script>
-        function fee(){
-            let f=Number(a.value)-(b.value)
-            c.value=f
-        } 
-    </script>
-     {% if error == "no" %}
-     <script>
-        alert("Data Insserted successfull")
-        window.location=("{% url 'view_stu'  %}")
-     </script>
-{% endif %}
-{% if error == "yes" %}
-     <script>
-         alert("Somthing went wrong")
-     </script>
 
-     {% endif %}
+</div>
+
+<script>
+function fee(){
+    let total = Number(document.getElementById('a').value);
+    let paid = Number(document.getElementById('b').value);
+    document.getElementById('c').value = total - paid;
+}
+</script>
+
+{% if error == "no" %}
+<script>
+    alert("Data inserted successfully");
+    window.location="{% url 'view_stu' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong");
+</script>
+{% endif %}
 
 </body>
 </html>

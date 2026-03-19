@@ -1,96 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
 
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
 
-        }
-        body{
-            height: 100vh;
-            width: 100%;
-        }
-        .base {
-              height:89%;
-              display: flex;
-              background-image: url(https://www.shutterstock.com/image-vector/dark-bluepurple-background-shining-neon-600nw-2450893247.jpg);
-              background-size:cover;
-              padding: 40px;
-        }
+body{
+    min-height:100vh;
+}
 
-        .content {
-            color: white;
-            border: 2px solid white;
-            border-radius: 5px;
-            padding: 60px 40px;
-            font-size: 50px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            text-align: center;
-            background-color: rgba(74, 72, 72, 0.417);
-            box-shadow: 0 0 5px 8px white;
-            margin-right: 40px;
-        }
+/* MAIN SECTION */
+.base{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-image:url(https://www.shutterstock.com/image-vector/dark-bluepurple-background-shining-neon-600nw-2450893247.jpg);
+    background-size:cover;
+    padding:40px;
+    gap:30px;
+    flex-wrap:wrap; /* IMPORTANT for mobile */
+}
 
-        .image {
-            border: 2px solid white;
-            width: 70%;
-            border-radius: 8px;
-            box-shadow: 0 0 5px 8px white;
-            animation: ani 8s alternate infinite linear;
-        }
+/* TEXT BOX */
+.content{
+    color:white;
+    border:2px solid white;
+    border-radius:10px;
+    padding:40px 30px;
+    font-size:40px;
+    text-align:center;
+    background-color:rgba(0,0,0,0.5);
+    box-shadow:0 0 10px white;
+    max-width:400px;
+    width:100%;
+}
 
-        @keyframes ani {
-            0% {
-                background-image: url(https://www.shutterstock.com/image-photo/university-student-writing-while-using-600nw-2442495581.jpg);
-                background-size: 100% 100%;
+/* IMAGE BOX */
+.image{
+    width:500px;
+    max-width:100%;
+    height:300px;
+    border-radius:10px;
+    box-shadow:0 0 10px white;
+    animation:ani 10s infinite linear;
+    background-size:cover;
+    background-position:center;
+}
 
-            }
+/* ANIMATION */
+@keyframes ani{
+    0%{
+        background-image:url(https://www.shutterstock.com/image-photo/university-student-writing-while-using-600nw-2442495581.jpg);
+    }
+    33%{
+        background-image:url(https://www.nasca.edu.in/learning-centre/wp-content/uploads/2019/10/students-future-740x493.jpg);
+    }
+    66%{
+        background-image:url(https://thumbs.dreamstime.com/b/note-book-laptop-pen-graph-paper-document-office-desk-table-behind-white-blind-86796417.jpg);
+    }
+    100%{
+        background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMJoFktwNML6Mo0tJngAEoWgUHR3JwiVB1bg&s);
+    }
+}
 
-            33% {
-                background-image: url(https://www.nasca.edu.in/learning-centre/wp-content/uploads/2019/10/students-future-740x493.jpg);
-                background-size: 100% 100%;
+/* 📱 MOBILE RESPONSIVE */
+@media(max-width:768px){
+    .base{
+        flex-direction:column;
+        padding:20px;
+    }
 
-            }
+    .content{
+        font-size:28px;
+        padding:30px 20px;
+    }
 
-            66% {
-                background-image: url(https://thumbs.dreamstime.com/b/note-book-laptop-pen-graph-paper-document-office-desk-table-behind-white-blind-86796417.jpg);
-                background-size: 100% 100%;
+    .image{
+        height:250px;
+    }
+}
 
-            }
+@media(max-width:480px){
+    .content{
+        font-size:22px;
+    }
 
-            100% {
-                background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMJoFktwNML6Mo0tJngAEoWgUHR3JwiVB1bg&s);
-                background-size: 100% 100%;
+    .image{
+        height:200px;
+    }
+}
 
-            }
-        }
-    </style>
-
+</style>
 </head>
 
 <body>
-    {% include 'nav.html' %}
-    <div class="base">
-        <div class="content">
-            Welcome <br> To <br>
-            Student<br> Management
-            <br>
-            System
-        </div>
 
-        <div class="image"></div>
+{% include 'nav.html' %}
 
+<div class="base">
 
+    <div class="content">
+        Welcome <br> To <br>
+        Student Management <br>
+        System
     </div>
 
-</body>
+    <div class="image"></div>
 
+</div>
+
+</body>
 </html>
